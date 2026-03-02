@@ -1,0 +1,48 @@
+<br />
+<!-- Bouton AddRes -->
+<button class="btn btn-primary" routerLink="/ajouter">AddRes</button>
+<br /><br />
+
+<!-- Champ de recherche lié à search -->
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Search</span>
+  </div>
+  <input
+    type="text"
+    aria-label="Search"
+    class="form-control"
+    [ngModel]="search"
+  />
+</div>
+
+<br />
+<div class="row">
+  <div class="card m-3" style="width: 18rem" *ngFor="let a of searchbytitle()">
+    <div class="card-body">
+      <h5 class="card-title">{{ a.name }}</h5>
+      <p class="card-text">{{ a.address }}</p>
+
+      <div *ngIf="a.status == 'acceptee' || a.status == 'en_attente'">
+        <button class="btn btn-success" (click)="ajouter(a)">
+          Ajouter aux favoris
+        </button>
+
+        <!-- Delete -->
+        <button class="btn btn-danger" (click)="deleteres(a.id)">
+          Delete
+        </button>
+
+        <!-- Update -->
+        <button class="btn btn-warning" [routerLink]="['/update', a.id]">
+          Update
+        </button>
+
+        <!-- Details -->
+        <button class="btn btn-info" [routerLink]="['/detail', a.id]">
+          Details
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

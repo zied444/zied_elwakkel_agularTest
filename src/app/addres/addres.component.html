@@ -1,0 +1,62 @@
+<form [formGroup]="resForm" (ngSubmit)="submitForm()">
+
+  
+  <div class="input-group mb-3">
+    <span class="input-group-text">Name</span>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="name"
+    />
+  </div>
+  <div class="alert alert-danger"
+       *ngIf="resForm.get('name')?.touched && resForm.get('name')?.errors?.['required']">
+    Name is required
+  </div>
+
+  
+  <div class="input-group mb-3">
+    <span class="input-group-text">Address</span>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="address"
+    />
+  </div>
+  <div class="alert alert-danger"
+       *ngIf="resForm.get('address')?.touched && resForm.get('address')?.errors?.['required']">
+    Address is required
+  </div>
+
+  
+  <div class="input-group mb-3">
+    <span class="input-group-text">Image URL</span>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="image"
+    />
+  </div>
+  <div class="alert alert-danger"
+       *ngIf="resForm.get('image')?.touched && resForm.get('image')?.errors?.['required']">
+    Image is required
+  </div>
+
+  
+  <div class="input-group mb-3">
+    <span class="input-group-text">Status</span>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="status"
+    />
+  </div>
+  <div class="alert alert-danger"
+       *ngIf="resForm.get('status')?.touched && resForm.get('status')?.errors?.['required']">
+    Status is required
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="resForm.invalid">
+    Save
+  </button>
+</form>
