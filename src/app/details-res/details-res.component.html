@@ -1,1 +1,19 @@
-<p>details-res works!</p>
+<div *ngIf="residence; else loading">
+  <h2>Détails de la résidence</h2>
+
+  <p><strong>Nom :</strong> {{ residence.name }}</p>
+  <p><strong>Adresse :</strong> {{ residence.address }}</p>
+  <p><strong>Status :</strong> {{ residence.status }}</p>
+
+  <div *ngIf="residence.image">
+    <strong>Image :</strong><br />
+    <img [src]="residence.image" alt="Image résidence" style="max-width: 300px;" />
+  </div>
+
+  <br />
+  <button class="btn btn-secondary" routerLink="/listres">Retour à la liste</button>
+</div>
+
+<ng-template #loading>
+  <p>Chargement des détails...</p>
+</ng-template>
